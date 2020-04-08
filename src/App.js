@@ -1,16 +1,35 @@
 import React from "react";
+import { ApolloProvider, InMemoryCache, ApolloClient } from "@apollo/client";
 import Header from "./Components/Header";
 import ShoppingItems from "./Components/ShoppingItems";
 import Footer from "./Components/Footer";
 import styled from "styled-components";
+import { items } from "./api";
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  clientState: {
+    defaults: {
+      cart: {
+        items: [],
+        total: 0,
+        __typeName: "Cart",
+      },
+      currency: "EUR",
+      itemsForSale: items,
+    },
+  },
+});
 
 function App() {
   return (
-    <StoreWrapper>
-      <Header />
-      <ShoppingItems />
-      <Footer />
-    </StoreWrapper>
+    <ApolloProvider client={client}>
+      <StoreWrapper>
+        <Header />
+        <ShoppingItems />
+        <Footer />
+      </StoreWrapper>
+    </ApolloProvider>
   );
 }
 
