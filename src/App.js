@@ -3,7 +3,11 @@ import React from "react";
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <header>
+        <h1>E-commerce website with React & Apollo (state manager)</h1>
+      </header>
+      <main></main>
+      <footer></footer>
     </div>
   );
 }
