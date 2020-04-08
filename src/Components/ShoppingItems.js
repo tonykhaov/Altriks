@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { items } from "../api";
 import Item from "./Item";
 import Cart from "./Cart";
+import { gql, useQuery } from "@apollo/client";
 
+const QUERY_SALE_ITEMS = gql`
+  query {
+    itemsForSale @client {
+      id
+      title
+      thumbnail_url
+      price
+    }
+  }
+`;
 function ShoppingItems() {
-  const itemsToDisplay = items.map((item) => (
-    <Item key={item.id} item={item} />
-  ));
+  // const itemsToDisplay = items.map((item) => (
+  //   <Item key={item.id} item={item} />
+  // ));
+  const { data } = useQuery(QUERY_SALE_ITEMS);
   return (
     <>
       <ItemsWrapper>
         <h1>Items Available</h1>
         <hr />
-        <ItemsContainer>{itemsToDisplay}</ItemsContainer>
+        <ItemsContainer>
+          {data &&
+            data.itemsForSale.map((item) => <div key={item.id} {...item} />)}
+        </ItemsContainer>
       </ItemsWrapper>
       <Cart />
     </>
