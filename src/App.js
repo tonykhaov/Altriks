@@ -1,35 +1,26 @@
 import React from "react";
-import { ApolloProvider, InMemoryCache, ApolloClient } from "@apollo/client";
+import styled from "styled-components";
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { Provider } from "react-redux";
+
+import rootReducers from "./Redux/rootReducers";
+
 import Header from "./Components/Header";
 import ShoppingItems from "./Components/ShoppingItems";
 import Footer from "./Components/Footer";
-import styled from "styled-components";
-import { items } from "./api";
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  clientState: {
-    defaults: {
-      cart: {
-        items: [],
-        total: 0,
-        __typeName: "Cart",
-      },
-      currency: "EUR",
-      itemsForSale: items,
-    },
-  },
-});
+const store = createStore(rootReducers, {}, composeWithDevTools());
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <Provider store={store}>
       <StoreWrapper>
         <Header />
         <ShoppingItems />
         <Footer />
       </StoreWrapper>
-    </ApolloProvider>
+    </Provider>
   );
 }
 
