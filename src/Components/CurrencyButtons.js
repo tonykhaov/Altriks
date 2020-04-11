@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-function CurrencyButtons() {
+function CurrencyButtons({ className }) {
   return (
-    <CurrencyButtonsWrapper>
+    <div className={className}>
       <button>€ EUR</button>
       <button>$ USD</button>
-    </CurrencyButtonsWrapper>
+    </div>
   );
 }
 
-const CurrencyButtonsWrapper = styled.div`
+export default styled(CurrencyButtons)`
   margin: 12px 0;
   button {
     font-size: 18px;
@@ -23,5 +23,3 @@ const CurrencyButtonsWrapper = styled.div`
     background: grey;
   }
 `;
-
-export default CurrencyButtons;

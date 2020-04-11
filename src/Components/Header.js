@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-function Header() {
+function Header({ className }) {
   return (
-    <HeaderWrapper>
+    <header className={className}>
       <h1>AlTriks</h1>
-      <p>E-commerce website coded with React & Apollo (state manager)</p>
-    </HeaderWrapper>
+      <p>E-commerce website coded with React & Redux</p>
+    </header>
   );
 }
 
-const HeaderWrapper = styled.header`
+export default styled(Header)`
   grid-area: header;
   text-align: center;
   padding: 12px;
@@ -21,11 +21,10 @@ const HeaderWrapper = styled.header`
   h1 {
     font-size: 48px;
     padding-bottom: 6px;
+    margin: 0;
   }
 
   p {
     color: lightgrey;
   }
 `;
-
-export default Header;

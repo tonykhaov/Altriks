@@ -1,22 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import Item from "./Item";
-import Cart from "./Cart";
+import AvailableItems from "./AvailableItems";
 
-function ShoppingItems() {
+function ShoppingItems({ className }) {
   return (
-    <>
-      <ItemsWrapper>
-        <h1>Items Available</h1>
-        <hr />
-        <ItemsContainer></ItemsContainer>
-      </ItemsWrapper>
-      <Cart />
-    </>
+    <main className={className}>
+      <h1>Items Available</h1>
+      <hr />
+      <AvailableItems />
+    </main>
   );
 }
 
-const ItemsWrapper = styled.main`
+export default styled(ShoppingItems)`
   grid-area: items;
   padding: 24px 48px;
   border-right: 1px solid lightgrey;
@@ -30,10 +26,3 @@ const ItemsWrapper = styled.main`
     padding: 12px 8px;
   }
 `;
-
-const ItemsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
-  grid-gap: 12px;
-`;
-export default ShoppingItems;

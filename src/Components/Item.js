@@ -1,8 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 
-function Item({ item }) {
+function Item({ item, className }) {
   return (
-    <div>
+    <div className={className}>
       <img src={item.thumbnail_url} alt={item.title} />
       <h1>{item.title}</h1>
       <p>{item.price}</p>
@@ -11,4 +12,4 @@ function Item({ item }) {
   );
 }
 
-export default Item;
+export default styled(Item)``;

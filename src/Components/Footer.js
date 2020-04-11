@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-function Footer() {
+
+function Footer({ className }) {
   return (
-    <FooterWrapper>
+    <footer className={className}>
       <h6>made by Tony KHAOV</h6>
       <p>I don't own the images, they all belong to Alltricks.</p>
-    </FooterWrapper>
+    </footer>
   );
 }
 
-const FooterWrapper = styled.footer`
+export default styled(Footer)`
   grid-area: footer;
   text-align: center;
   padding: 16px;
@@ -24,4 +25,3 @@ const FooterWrapper = styled.footer`
     color: grey;
   }
 `;
-export default Footer;
