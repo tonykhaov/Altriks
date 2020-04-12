@@ -9,7 +9,8 @@ import { getItems } from "../Redux/actionItems";
 function AvailableItems({ className, getItems, items }) {
   useEffect(() => {
     getItems();
-  }, []);
+    console.log(getItems);
+  }, [getItems]);
   return (
     <div className={className}>
       {items.map((item) => (
@@ -30,12 +31,7 @@ const mapStateToProps = (state) => ({
   items: state.items.items,
 });
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      getItems,
-    },
-    dispatch
-  );
+  bindActionCreators({ getItems }, dispatch);
 
 export default connect(
   mapStateToProps,
