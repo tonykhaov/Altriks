@@ -5,14 +5,18 @@ import { connect } from "react-redux";
 import CartItem from "./CartItem";
 
 function Cart({ className, cart, items }) {
+  const total = Object.keys(cart).reduce((total, previousValue) => {
+    return total + items[previousValue].price * cart[previousValue];
+  }, 0);
+
   return (
     <aside className={className}>
       <h1>My Cart ({Object.keys(cart).length})</h1>
       <hr />
       {Object.keys(cart).map((key) => (
-        <CartItem key={key} item={items[key]} count={cart[key]} />
+        <CartItem key={key} item={items[key]} count={cart[key]} index={key} />
       ))}
-      <h3>Total:</h3>
+      <h3>Total: {total} €</h3>
       <CurrencyButtons />
     </aside>
   );
