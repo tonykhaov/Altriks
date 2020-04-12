@@ -1,17 +1,19 @@
+import { ADD_TO_CART, REMOVE_FROM_CART } from "./actionCart";
+
 const initialState = {
   cart: {},
 };
 
 export default function (state = initialState, action) {
-  switch (action.type) {
-    case "ADD_TO_CART":
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          [action.id]: action.payload,
-        },
-      };
+  const { type, id } = action;
+  const newState = { ...state, cart: { ...state.cart } };
+  switch (type) {
+    case ADD_TO_CART:
+      newState.cart[id] = newState.cart[id] + 1 || 1;
+      return newState;
+    case REMOVE_FROM_CART:
+      delete newState.cart[id];
+      return newState;
     default:
       return state;
   }
