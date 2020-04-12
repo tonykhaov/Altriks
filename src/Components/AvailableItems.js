@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { items } from "../api.js";
-import Item from "./Item";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-function AvailableItems({ className }) {
+import Item from "./Item";
+import { getItems } from "../Redux/actionItems";
+
+function AvailableItems({ className, getItems, items }) {
+  useEffect(() => {
+    getItems();
+  }, []);
   return (
     <div className={className}>
       {items.map((item) => (
-        <Item key={item.id} item={item} />
+        <Item key={item.id} item={item} index={items.indexOf(item)} />
       ))}
     </div>
   );
 }
 
-export default styled(AvailableItems)`
+const StyledAvailableItems = styled(AvailableItems)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
   grid-gap: 24px;
   justify-content: center;
 `;
+
+const mapStateToProps = (state) => ({
+  items: state.items.items,
+});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      getItems,
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StyledAvailableItems);
