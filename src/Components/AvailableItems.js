@@ -22,9 +22,10 @@ function AvailableItems({ className, getItems, items }) {
 
 const StyledAvailableItems = styled(AvailableItems)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
-  grid-gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
   justify-content: center;
+  align-items: center;
+  grid-gap: 12px;
 `;
 
 const mapStateToProps = (state) => ({
