@@ -7,7 +7,7 @@ import CartItem from "./CartItem";
 function Cart({ className, cart, items }) {
   return (
     <aside className={className}>
-      <h1>My Cart</h1>
+      <h1>My Cart ({Object.keys(cart).length})</h1>
       <hr />
       {Object.keys(cart).map((key) => (
         <CartItem key={key} item={items[key]} count={cart[key]} />
