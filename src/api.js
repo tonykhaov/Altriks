@@ -35,4 +35,34 @@ export const items = [
     thumbnail_url: "/gloves.jpg",
     price: 7,
   },
+  {
+    id: "swimming_suit__1",
+    title: "Swimming Suit",
+    thumbnail_url: "/swimming_suit.jpg",
+    price: 70,
+  },
+  {
+    id: "goggles__1",
+    title: "Goggles",
+    thumbnail_url: "/goggles.jpg",
+    price: 4,
+  },
+  {
+    id: "swimming_cap__1",
+    title: "Swimming Cap",
+    thumbnail_url: "/swimming_cap.jpg",
+    price: 14,
+  },
+  {
+    id: "socks__1",
+    title: "Socks",
+    thumbnail_url: "/socks.jpg",
+    price: 6,
+  },
+  {
+    id: "wheel__1",
+    title: "Wheel",
+    thumbnail_url: "/wheel.jpg",
+    price: 60,
+  },
 ];
