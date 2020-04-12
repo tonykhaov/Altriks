@@ -3,30 +3,32 @@ import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import addToCart from "../Redux/actionCart";
+import updateCart from "../Redux/actionCart";
 
-function Item({ item, className, index, dispatch }) {
+function Item({ item, className, index, updateCart, cart }) {
+  const addToCart = () => {
+    const payload = cart[index] + 1 || 1;
+    updateCart(index, payload);
+  };
+
   const { title, price, thumbnail_url } = item;
   return (
     <div className={className}>
       <img src={thumbnail_url} alt={title} />
       <h1>{title}</h1>
       <p>{price}</p>
-      <button onClick={() => dispatch({ type: "ADD_TO_CART", id: index })}>
-        Add to cart
-      </button>
+      <button onClick={addToCart}>Add to cart</button>
     </div>
   );
 }
 
 const StyledItem = styled(Item)``;
 
-// const mapDispatchToProps = (dispatch) =>
-//   bindActionCreators(
-//     {
-//       addToCart,
-//     },
-//     dispatch
-//   );
+const mapStateToProps = (state) => ({
+  cart: state.cart.cart,
+});
 
-export default connect()(StyledItem);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ updateCart }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(StyledItem);
