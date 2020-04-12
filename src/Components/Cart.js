@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import CurrencyButtons from "./CurrencyButtons";
 import { connect } from "react-redux";
+import CartItem from "./CartItem";
 
-function Cart({ className, reducer }) {
+function Cart({ className, cart, items }) {
   return (
     <aside className={className}>
-      <h1>My Cart {reducer}</h1>
+      <h1>My Cart</h1>
       <hr />
+      {Object.keys(cart).map((key) => (
+        <CartItem key={key} item={items[key]} count={cart[key]} />
+      ))}
       <h3>Total:</h3>
       <CurrencyButtons />
     </aside>
@@ -35,7 +39,8 @@ const StyledCart = styled(Cart)`
 `;
 
 const mapStateToProps = (state) => ({
-  reducer: state.reducer,
+  cart: state.cart.cart,
+  items: state.items.items,
 });
 
 export default connect(mapStateToProps)(StyledCart);
