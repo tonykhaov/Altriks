@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
+import { save, load } from "redux-localstorage-simple";
 
 import rootReducers from "./Redux/rootReducers";
 
@@ -17,8 +18,8 @@ const middleware = [thunk, logger];
 
 const store = createStore(
   rootReducers,
-  {},
-  composeWithDevTools(applyMiddleware(...middleware))
+  load(),
+  composeWithDevTools(applyMiddleware(...middleware, save()))
 );
 
 function App() {
