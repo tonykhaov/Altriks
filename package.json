@@ -1,5 +1,5 @@
 {
-  "name": "apollo-ecommerce",
+  "name": "altriks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "redux-localstorage-simple": "^2.1.6",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0"
