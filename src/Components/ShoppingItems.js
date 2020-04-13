@@ -16,6 +16,8 @@ export default styled(ShoppingItems)`
   grid-area: items;
   padding: 24px 48px;
   border-right: 1px solid lightgrey;
+  overflow-y: auto;
+  height: calc(100vh - 103px);
 
   hr {
     margin: 12px 0;
