@@ -6,13 +6,25 @@ function Footer({ className }) {
     <footer className={className}>
       <h6>JOIN THE ALTRIKS PELOTON</h6>
       <div className="social-medias">
-        <a href="https://twitter.com/Alltricks_com">
+        <a
+          href="https://twitter.com/Alltricks_com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fab fa-twitter"></i>
         </a>
-        <a href="https://www.facebook.com/alltricks">
+        <a
+          href="https://www.facebook.com/alltricks"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fab fa-facebook-f"></i>
         </a>
-        <a href="https://www.instagram.com/alltricks_com/">
+        <a
+          href="https://www.instagram.com/alltricks_com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fab fa-instagram"></i>
         </a>
       </div>
