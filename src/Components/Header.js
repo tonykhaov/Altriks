@@ -5,7 +5,10 @@ function Header({ className }) {
   return (
     <header className={className}>
       <h1>AlTriks</h1>
-      <p>E-commerce website coded with React & Redux</p>
+      <p>
+        E-commerce website coded with <span className="techno">React</span> et{" "}
+        <span className="techno">Redux</span>
+      </p>
     </header>
   );
 }
@@ -25,6 +28,11 @@ export default styled(Header)`
   }
 
   p {
-    color: lightgrey;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  .techno {
+    color: #fff;
   }
 `;
