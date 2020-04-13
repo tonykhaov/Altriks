@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import CurrencyButtons from "./CurrencyButtons";
 import { connect } from "react-redux";
+
+import CurrencyButtons from "./CurrencyButtons";
 import CartItem from "./CartItem";
 import { Button } from "../Elements/Button";
+import { formatPrice } from "../Utilities/helpers";
+import EmptyCart from "./EmptyCart";
 
-function Cart({ className, cart, items }) {
+function Cart({ className, cart, items, currency }) {
   const total = Object.keys(cart).reduce((total, previousValue) => {
     return total + items[previousValue].price * cart[previousValue];
   }, 0);
@@ -15,6 +18,8 @@ function Cart({ className, cart, items }) {
   const checkout = () => {
     if (isCartEmpty) {
       return alert("Empty cart... go add something to your cart");
+    } else {
+      return alert("Email me to get your items, shipped for free!");
     }
   };
 
@@ -33,12 +38,11 @@ function Cart({ className, cart, items }) {
             />
           ))
         ) : (
-          <p className="empty-message">
-            Nothing in the cart... :( <br /> Go add something to the cart!
-          </p>
+          <EmptyCart />
         )}
       </div>
-      <h3>Total: {total} €</h3>
+      <h3>Total: {formatPrice(total, currency)}</h3>
+      <p className="rate">(1 EUR = 1.09 USD)</p>
       <CurrencyButtons />
       <Button onClick={checkout}>Checkout</Button>
     </aside>
@@ -64,10 +68,8 @@ const StyledCart = styled(Cart)`
     padding: 12px 0 24px;
   }
 
-  .empty-message {
-    padding: 8px 0;
-    text-align: center;
-    border: 5px solid coral;
+  .rate {
+    color: grey;
   }
 
   @media (max-width: 768px) {
@@ -85,6 +87,7 @@ const StyledCart = styled(Cart)`
 const mapStateToProps = (state) => ({
   cart: state.cart.cart,
   items: state.items.items,
+  currency: state.currency.currency,
 });
 
 export default connect(mapStateToProps)(StyledCart);
