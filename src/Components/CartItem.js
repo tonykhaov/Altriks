@@ -4,16 +4,18 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { removeFromCart } from "../Redux/actionCart";
+import { formatPrice } from "../Utilities/helpers";
 
-function CartItem({ className, item, count, index, removeFromCart }) {
+function CartItem({ className, item, count, index, removeFromCart, currency }) {
+  const { title, price } = item;
   return (
     <div className={className}>
       <span>
         <p>{count}x</p>
-        <p>{item.title}</p>
+        <p>{title}</p>
       </span>
       <span>
-        <p>{item.price * count} €</p>
+        <p>{formatPrice(price, currency)}</p>
         <button onClick={() => removeFromCart(index)}>X</button>
       </span>
     </div>
@@ -37,7 +39,9 @@ const StyledCartItem = styled(CartItem)`
   }
 `;
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  currency: state.currency.currency,
+});
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ removeFromCart }, dispatch);
 
