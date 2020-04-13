@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import { addToCart } from "../Redux/actionCart";
+import { Button } from "../Elements/Button";
 
 function Item({ item, className, index, addToCart }) {
   const { title, price, thumbnail_url } = item;
@@ -14,7 +15,7 @@ function Item({ item, className, index, addToCart }) {
         <h1>{title}</h1>
         <p className="price">{price} €</p>
       </span>
-      <button onClick={() => addToCart(index)}>Add to cart</button>
+      <Button onClick={() => addToCart(index)}>Add to cart</Button>
     </div>
   );
 }
@@ -29,27 +30,6 @@ const StyledItem = styled(Item)`
   .price {
     margin-top: 8px;
     margin-bottom: 12px;
-  }
-
-  button {
-    width: 100%;
-    padding: 8px 12px;
-    border: none;
-    background-color: #118df2;
-    color: white;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    border-radius: 2px;
-    &:hover,
-    &:focus {
-      background-color: #11b2f2;
-    }
-
-    &:active {
-      background-color: #118df2;
-    }
   }
 `;
 
