@@ -14,6 +14,8 @@ function Header({ className }) {
 }
 
 export default styled(Header)`
+  @import url("https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@700&display=swap");
+
   grid-area: header;
   text-align: center;
   padding: 12px;
@@ -22,13 +24,15 @@ export default styled(Header)`
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 
   h1 {
-    font-size: 48px;
-    padding-bottom: 6px;
-    margin: 0;
+    padding-top: 12px;
+    font-size: 64px;
+    font-family: "Baloo Tammudu 2", cursive;
+    font-style: italic;
   }
 
   p {
     color: #aaa;
+    margin-top: -12px;
     font-style: italic;
   }
 
