@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -7,10 +7,6 @@ import Item from "./Item";
 import { getItems } from "../Redux/actionItems";
 
 function AvailableItems({ className, getItems, items }) {
-  useEffect(() => {
-    getItems();
-    console.log(getItems);
-  }, [getItems]);
   return (
     <div className={className}>
       {items.map((item) => (
@@ -22,7 +18,7 @@ function AvailableItems({ className, getItems, items }) {
 
 const StyledAvailableItems = styled(AvailableItems)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
   justify-content: center;
   align-items: stretch;
   grid-gap: 12px;
