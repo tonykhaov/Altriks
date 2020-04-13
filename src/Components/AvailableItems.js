@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -7,6 +7,9 @@ import Item from "./Item";
 import { getItems } from "../Redux/actionItems";
 
 function AvailableItems({ className, getItems, items }) {
+  useEffect(() => {
+    getItems();
+  }, [getItems]);
   return (
     <div className={className}>
       {items.map((item) => (
