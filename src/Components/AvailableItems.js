@@ -24,7 +24,7 @@ const StyledAvailableItems = styled(AvailableItems)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   grid-gap: 12px;
 `;
 

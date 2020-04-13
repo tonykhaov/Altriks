@@ -4,7 +4,7 @@ import styled from "styled-components";
 function CurrencyButtons({ className }) {
   return (
     <div className={className}>
-      <button>€ EUR</button>
+      <button className="active">€ EUR</button>
       <button>$ USD</button>
     </div>
   );
@@ -20,6 +20,10 @@ export default styled(CurrencyButtons)`
     cursor: pointer;
   }
   button:hover {
+    background: grey;
+  }
+
+  .active {
     background: grey;
   }
 `;

@@ -9,8 +9,8 @@ function CartItem({ className, item, count, index, removeFromCart }) {
   return (
     <div className={className}>
       <span>
-        <p>{item.title}:</p>
-        <p>{count}</p>
+        <p>{count}x</p>
+        <p>{item.title}</p>
       </span>
       <span>
         <p>{item.price * count} €</p>
@@ -23,11 +23,17 @@ function CartItem({ className, item, count, index, removeFromCart }) {
 const StyledCartItem = styled(CartItem)`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  padding: 4px 0;
+  border-bottom: 1px solid black;
 
   span > * {
     display: inline;
-    margin-right: 8px;
+    margin-right: 6px;
+  }
+
+  button {
+    cursor: pointer;
   }
 `;
 

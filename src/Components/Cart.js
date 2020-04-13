@@ -13,9 +13,22 @@ function Cart({ className, cart, items }) {
     <aside className={className}>
       <h1>My Cart ({Object.keys(cart).length})</h1>
       <hr />
-      {Object.keys(cart).map((key) => (
-        <CartItem key={key} item={items[key]} count={cart[key]} index={key} />
-      ))}
+      <div className="items">
+        {Object.keys(cart).length > 0 ? (
+          Object.keys(cart).map((key) => (
+            <CartItem
+              key={key}
+              item={items[key]}
+              count={cart[key]}
+              index={key}
+            />
+          ))
+        ) : (
+          <p>
+            Nothing in the cart... :( <br /> Go buy something!
+          </p>
+        )}
+      </div>
       <h3>Total: {total} €</h3>
       <CurrencyButtons />
     </aside>
@@ -33,8 +46,12 @@ const StyledCart = styled(Cart)`
   }
 
   hr {
-    margin: 12px 0 32px;
+    margin: 12px 0;
     color: lightgrey;
+  }
+
+  .items {
+    padding: 12px 0 24px;
   }
 
   @media (max-width: 768px) {
