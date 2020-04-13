@@ -6,7 +6,7 @@ function Header({ className }) {
     <header className={className}>
       <h1>AlTriks</h1>
       <p>
-        E-commerce website coded with <span className="techno">React</span> et{" "}
+        E-commerce website coded with <span className="techno">React</span> and{" "}
         <span className="techno">Redux</span>
       </p>
     </header>
