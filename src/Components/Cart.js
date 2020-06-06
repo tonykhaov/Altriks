@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import CurrencyButtons from "./CurrencyButtons";
 import CartItem from "./CartItem";
@@ -8,7 +8,11 @@ import { Button } from "../Elements/Button";
 import { formatPrice } from "../Utilities/helpers";
 import EmptyCart from "./EmptyCart";
 
-function Cart({ className, cart, items, currency }) {
+function Cart({ className }) {
+  const cart = useSelector((state) => state.cart.cart);
+  const items = useSelector((state) => state.items.items);
+  const currency = useSelector((state) => state.currency.currency);
+
   const total = Object.keys(cart).reduce((total, previousValue) => {
     return total + items[previousValue].price * cart[previousValue];
   }, 0);
@@ -84,10 +88,4 @@ const StyledCart = styled(Cart)`
   }
 `;
 
-const mapStateToProps = (state) => ({
-  cart: state.cart.cart,
-  items: state.items.items,
-  currency: state.currency.currency,
-});
-
-export default connect(mapStateToProps)(StyledCart);
+export default StyledCart;
