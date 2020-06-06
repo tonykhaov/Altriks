@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-
-import Item from "./Item";
+import { useDispatch, useSelector } from "react-redux";
 import { getItems } from "../Redux/actionItems";
+import Item from "./Item";
 
-function AvailableItems({ className, getItems, items }) {
+function AvailableItems({ className }) {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.items.items);
+
   useEffect(() => {
-    getItems();
-  }, [getItems]);
+    dispatch(getItems);
+  }, [dispatch]);
   return (
     <div className={className}>
       {items.map((item) => (
@@ -27,13 +28,4 @@ const StyledAvailableItems = styled(AvailableItems)`
   grid-gap: 12px;
 `;
 
-const mapStateToProps = (state) => ({
-  items: state.items.items,
-});
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ getItems }, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StyledAvailableItems);
+export default StyledAvailableItems;
