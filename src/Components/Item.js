@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart } from "../Redux/actionCart";
 import { Button } from "../Elements/Button";
 import { formatPrice } from "../Utilities/helpers";
 
-function Item({ item, className, index, addToCart, currency }) {
-  const { title, price, thumbnail_url } = item;
+function Item({ item, className, index }) {
+  const dispatch = useDispatch();
+  const currency = useSelector((state) => state.currency.currency);
 
+  const { title, price, thumbnail_url } = item;
   return (
     <div className={className}>
       <img src={thumbnail_url} alt={title} />
@@ -17,7 +18,7 @@ function Item({ item, className, index, addToCart, currency }) {
         <h1>{title}</h1>
         <p className="price">{formatPrice(price, currency)}</p>
       </span>
-      <Button onClick={() => addToCart(index)}>Add to cart</Button>
+      <Button onClick={() => dispatch(addToCart(index))}>Add to cart</Button>
     </div>
   );
 }
@@ -35,11 +36,4 @@ const StyledItem = styled(Item)`
   }
 `;
 
-const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
-});
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ addToCart }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(StyledItem);
+export default StyledItem;
