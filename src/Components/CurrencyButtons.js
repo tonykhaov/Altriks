@@ -1,21 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { useSelector, useDispatch } from "react-redux";
 import { changeToEUR, changeToUSD } from "../Redux/actionCurrency";
 
-function CurrencyButtons({ className, currency, changeToEUR, changeToUSD }) {
+function CurrencyButtons({ className }) {
+  const dispatch = useDispatch();
+  const currency = useSelector((state) => state.currency.currency);
+
   return (
     <div className={className}>
       <button
         className={currency === "EUR" ? "active" : ""}
-        onClick={changeToEUR}
+        onClick={() => dispatch(changeToEUR())}
       >
         € EUR
       </button>
       <button
         className={currency === "USD" ? "active" : ""}
-        onClick={changeToUSD}
+        onClick={() => dispatch(changeToUSD())}
       >
         $ USD
       </button>
@@ -41,19 +43,4 @@ const StyledCurrencyButtons = styled(CurrencyButtons)`
   }
 `;
 
-const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
-});
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      changeToEUR,
-      changeToUSD,
-    },
-    dispatch
-  );
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StyledCurrencyButtons);
+export default StyledCurrencyButtons;
