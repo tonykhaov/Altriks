@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 
 import { removeFromCart } from "../Redux/actionCart";
 import { formatPrice } from "../Utilities/helpers";
+import { useSelector, useDispatch } from "react-redux";
 
-function CartItem({ className, item, count, index, removeFromCart, currency }) {
+function CartItem({ className, item, count, index }) {
+  const dispatch = useDispatch();
+  const currency = useSelector((state) => state.currency.currency);
+
   const { title, price } = item;
   return (
     <div className={className}>
@@ -16,7 +18,7 @@ function CartItem({ className, item, count, index, removeFromCart, currency }) {
       </span>
       <span>
         <p>{formatPrice(price, currency)}</p>
-        <button onClick={() => removeFromCart(index)}>X</button>
+        <button onClick={() => dispatch(removeFromCart(index))}>X</button>
       </span>
     </div>
   );
@@ -39,10 +41,4 @@ const StyledCartItem = styled(CartItem)`
   }
 `;
 
-const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
-});
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ removeFromCart }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(StyledCartItem);
+export default StyledCartItem;
