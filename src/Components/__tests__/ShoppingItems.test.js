@@ -3,9 +3,9 @@ import { render } from "../../test/reduxRender";
 import ShoppingItems from "../ShoppingItems";
 
 test("renders ShoppingItems component with correct datas", () => {
-  const { getAllByRole, container } = render(<ShoppingItems />);
+  const { getByText, container } = render(<ShoppingItems />);
 
-  expect(getAllByRole("heading")[0]).toHaveTextContent(/items available/i);
+  expect(getByText(/items available/i)).toBeInTheDocument();
 
   expect(container.firstChild).toMatchInlineSnapshot(`
     .c3 {

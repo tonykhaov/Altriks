@@ -6,11 +6,11 @@ test("renders EmptyCart with correct datas", () => {
   const { getByAltText, getByText, container } = render(<EmptyCart />);
 
   const emptyCartMessage = getByText(
-    /nothing in the cart\.\.\. :\( Go add something to the cart\!/i
+    /nothing in the cart\.\.\. :\( Go add something to the cart!/i
   );
-  expect(emptyCartMessage).toBeInTheDocument();
-
   const cogImg = getByAltText("cog");
+
+  expect(emptyCartMessage).toBeInTheDocument();
   expect(cogImg).toBeInTheDocument();
   expect(cogImg).toHaveAttribute("src", "icon-cog.svg");
 
