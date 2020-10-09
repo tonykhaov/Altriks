@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render } from "../../test/reduxRender";
+import { fireEvent, render, screen } from "../../test/reduxRender";
 import {
   changeToEUR as mockChangeToEUR,
   changeToUSD as mockChangeToUSD,
@@ -15,9 +15,9 @@ test("renders CurrencyButtons and changing currency works", () => {
   mockChangeToUSD.mockReturnValue({
     type: "CHANGE_TO_USD",
   });
-  const { getByText } = render(<CurrencyButtons />);
-  const EURbutton = getByText(/.* eur/i);
-  const USDbutton = getByText(/.* usd/i);
+  render(<CurrencyButtons />);
+  const EURbutton = screen.getByText(/.* eur/i);
+  const USDbutton = screen.getByText(/.* usd/i);
 
   fireEvent.click(USDbutton);
   expect(mockChangeToUSD).toHaveBeenCalledTimes(1);

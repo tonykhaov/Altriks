@@ -1,11 +1,11 @@
 import React from "react";
-import { render } from "../../test/reduxRender";
+import { render, screen } from "../../test/reduxRender";
 import ShoppingItems from "../ShoppingItems";
 
 test("renders ShoppingItems component with correct datas", () => {
-  const { getByText, container } = render(<ShoppingItems />);
+  const { container } = render(<ShoppingItems />);
 
-  expect(getByText(/items available/i)).toBeInTheDocument();
+  expect(screen.getByText(/items available/i)).toBeInTheDocument();
 
   expect(container.firstChild).toMatchInlineSnapshot(`
     .c3 {

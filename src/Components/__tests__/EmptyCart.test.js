@@ -1,14 +1,14 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import EmptyCart from "../EmptyCart";
 
 test("renders EmptyCart with correct datas", () => {
-  const { getByAltText, getByText, container } = render(<EmptyCart />);
+  const { container } = render(<EmptyCart />);
 
-  const emptyCartMessage = getByText(
+  const emptyCartMessage = screen.getByText(
     /nothing in the cart\.\.\. :\( Go add something to the cart!/i
   );
-  const cogImg = getByAltText("cog");
+  const cogImg = screen.getByAltText("cog");
 
   expect(emptyCartMessage).toBeInTheDocument();
   expect(cogImg).toBeInTheDocument();

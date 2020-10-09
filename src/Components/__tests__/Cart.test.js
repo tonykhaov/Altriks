@@ -1,17 +1,17 @@
 import React from "react";
-import { render } from "../../test/reduxRender";
+import { render, screen } from "../../test/reduxRender";
 import Cart from "../Cart";
 
 test("renders Cart with correct datas", () => {
-  const { getByText, getByAltText, container } = render(<Cart />);
-  const cartHeading = getByText(/my cart (.*)/i);
-  const emptyCartMessage = getByText(
+  const { container } = render(<Cart />);
+  const cartHeading = screen.getByText(/my cart (.*)/i);
+  const emptyCartMessage = screen.getByText(
     /Nothing in the cart\.{3} :\( Go add something to the cart!/i
   );
-  const spinningCog = getByAltText(/cog/i);
-  const rateText = getByText(/(1 eur = 1.09 usd)/i);
-  const total = getByText(/total: \d{1},\d{2} .*/i);
-  const checkoutButton = getByText(/checkout/i);
+  const spinningCog = screen.getByAltText(/cog/i);
+  const rateText = screen.getByText(/(1 eur = 1.09 usd)/i);
+  const total = screen.getByText(/total: \d{1},\d{2} .*/i);
+  const checkoutButton = screen.getByText(/checkout/i);
 
   expect(cartHeading).toBeInTheDocument();
   expect(emptyCartMessage).toBeInTheDocument();

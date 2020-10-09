@@ -1,13 +1,13 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Header from "../Header";
 
 test("should render Header with correct infos", async () => {
-  const { getByRole, getByText, container } = render(<Header />);
+  const { container } = render(<Header />);
 
-  expect(getByRole("heading")).toHaveTextContent(/altriks/i);
-  expect(getByText(/react/i)).toBeInTheDocument();
-  expect(getByText(/redux/i)).toBeInTheDocument();
+  expect(screen.getByRole("heading")).toHaveTextContent(/altriks/i);
+  expect(screen.getByText(/react/i)).toBeInTheDocument();
+  expect(screen.getByText(/redux/i)).toBeInTheDocument();
 
   expect(container.firstChild).toMatchInlineSnapshot(`
     .c0 {

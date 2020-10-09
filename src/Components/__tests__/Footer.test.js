@@ -1,12 +1,14 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import Footer from "../Footer";
 
 test("renders Footer with correct datas ", () => {
-  const { getByRole, getAllByRole, container } = render(<Footer />);
+  const { container } = render(<Footer />);
 
-  expect(getByRole("heading")).toHaveTextContent(/join the altriks peloton/i);
-  expect(getAllByRole("link").length).toBe(3);
+  expect(screen.getByRole("heading")).toHaveTextContent(
+    /join the altriks peloton/i
+  );
+  expect(screen.getAllByRole("link").length).toBe(3);
 
   expect(container.firstChild).toMatchInlineSnapshot(`
     .c0 {
