@@ -1,5 +1,6 @@
 import React from "react";
-import { fireEvent, render, screen } from "../../test/reduxRender";
+import { render, screen } from "../../test/reduxRender";
+import user from "@testing-library/user-event";
 import {
   changeToEUR as mockChangeToEUR,
   changeToUSD as mockChangeToUSD,
@@ -19,21 +20,21 @@ test("renders CurrencyButtons and changing currency works", () => {
   const EURbutton = screen.getByText(/.* eur/i);
   const USDbutton = screen.getByText(/.* usd/i);
 
-  fireEvent.click(USDbutton);
+  user.click(USDbutton);
   expect(mockChangeToUSD).toHaveBeenCalledTimes(1);
   expect(USDbutton).toHaveClass("active");
   expect(EURbutton).not.toHaveClass("active");
 
-  fireEvent.click(EURbutton);
+  user.click(EURbutton);
   expect(mockChangeToEUR).toHaveBeenCalledTimes(1);
   expect(EURbutton).toHaveClass("active");
   expect(USDbutton).not.toHaveClass("active");
 
-  fireEvent.click(USDbutton);
+  user.click(USDbutton);
   expect(mockChangeToUSD).toHaveBeenCalledTimes(2);
   expect(USDbutton).toHaveClass("active");
 
-  fireEvent.click(EURbutton);
+  user.click(EURbutton);
   expect(mockChangeToEUR).toHaveBeenCalledTimes(2);
   expect(EURbutton).toHaveClass("active");
 });
