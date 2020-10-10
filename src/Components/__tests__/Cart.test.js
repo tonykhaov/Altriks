@@ -18,7 +18,7 @@ test("renders Cart with correct datas", () => {
   expect(spinningCog).toBeInTheDocument();
   expect(total).toBeInTheDocument();
   expect(rateText).toBeInTheDocument();
-  expect(checkoutButton).toBeInTheDocument();
+  expect(checkoutButton).toBeDisabled();
 
   expect(container.firstChild).toMatchInlineSnapshot(`
     .c2 {
@@ -127,6 +127,11 @@ test("renders Cart with correct datas", () => {
       font-weight: 700;
     }
 
+    .c0 .c3:disabled {
+      background-color: lightgray;
+      cursor: auto;
+    }
+
     @media (max-width:768px) {
       .c0 {
         padding: 12px 8px;
@@ -185,6 +190,7 @@ test("renders Cart with correct datas", () => {
       </div>
       <button
         class="c3 c4"
+        disabled=""
       >
         Checkout
       </button>
