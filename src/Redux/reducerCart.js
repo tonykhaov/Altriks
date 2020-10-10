@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./actionCart";
+import { ADD_TO_CART, EMPTY_CART, REMOVE_FROM_CART } from "./actionCart";
 
 const initialState = {
   cart: {},
@@ -13,6 +13,9 @@ export default function (state = initialState, action) {
       return newState;
     case REMOVE_FROM_CART:
       delete newState.cart[id];
+      return newState;
+    case EMPTY_CART:
+      newState.cart = {};
       return newState;
     default:
       return state;

@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import CurrencyButtons from "./CurrencyButtons";
 import CartItem from "./CartItem";
 import { Button } from "../Elements/Button";
 import { formatPrice } from "../Utilities/helpers";
 import EmptyCart from "./EmptyCart";
+import { emptyCart } from "../Redux/actionCart";
 
 function Cart({ className }) {
   const cart = useSelector((state) => state.cart.cart);
   const items = useSelector((state) => state.items.items);
   const currency = useSelector((state) => state.currency.currency);
+  const dispatch = useDispatch();
 
   const total = Object.keys(cart).reduce((total, previousValue) => {
     return total + items[previousValue].price * cart[previousValue];
@@ -20,11 +22,8 @@ function Cart({ className }) {
   const isCartEmpty = Object.keys(cart).length > 0 ? false : true;
 
   const checkout = () => {
-    if (isCartEmpty) {
-      return alert("Empty cart... go add something to your cart");
-    } else {
-      return alert("Email me to get your items, shipped for free!");
-    }
+    if (isCartEmpty) return;
+    dispatch(emptyCart());
   };
 
   return (
