@@ -17,7 +17,7 @@ export default styled(ShoppingItems)`
   padding: 24px 48px;
   border-right: 1px solid lightgrey;
   overflow-y: auto;
-  height: calc(100vh - 103px);
+  height: calc(90vh - 103px);
 
   hr {
     margin: 12px 0;
