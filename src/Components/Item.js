@@ -18,7 +18,12 @@ function Item({ item, className, index }) {
         <h1>{title}</h1>
         <p className="price">{formatPrice(price, currency)}</p>
       </span>
-      <Button onClick={() => dispatch(addToCart(index))}>Add to cart</Button>
+      <Button
+        onClick={() => dispatch(addToCart(index))}
+        data-testid={`${title}AddToCartButton`}
+      >
+        Add to cart
+      </Button>
     </div>
   );
 }

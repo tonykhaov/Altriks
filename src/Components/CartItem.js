@@ -11,7 +11,7 @@ function CartItem({ className, item, count, index }) {
 
   const { title, price } = item;
   return (
-    <div className={className}>
+    <div className={className} data-testid={`${title}InCart`}>
       <span>
         <p>{count}x</p>
         <p>{title}</p>
