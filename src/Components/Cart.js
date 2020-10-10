@@ -47,7 +47,9 @@ function Cart({ className }) {
       <h3>Total: {formatPrice(total, currency)}</h3>
       <p className="rate">(1 EUR = 1.09 USD)</p>
       <CurrencyButtons />
-      <Button onClick={checkout}>Checkout</Button>
+      <Button onClick={checkout} disabled={isCartEmpty}>
+        Checkout
+      </Button>
     </aside>
   );
 }
@@ -84,6 +86,10 @@ const StyledCart = styled(Cart)`
     padding: 12px 0;
     font-size: 18px;
     font-weight: 700;
+    &:disabled {
+      background-color: lightgray;
+      cursor: auto;
+    }
   }
 `;
 
