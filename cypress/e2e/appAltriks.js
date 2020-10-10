@@ -1,11 +1,9 @@
 describe("E2E Test Altriks App", () => {
   it("can change currency", () => {
-    const user = cy;
-    user
-      .visit("/")
-      .get(".sc-AxgMl > :nth-child(2)")
-      .click()
-      .get(".sc-AxgMl > :nth-child(1)")
-      .click();
+    cy.visit("/");
+
+    cy.findByRole("button", { name: /.* usd/i }).click();
+
+    cy.findByRole("button", { name: /.* eur/i }).click();
   });
 });
