@@ -159,7 +159,7 @@ test("renders Cart with correct datas", () => {
              Go add something to the cart!
           </p>
           <img
-            alt="cog"
+            alt="empty cart spinning cog"
             class="cog"
             src="icon-cog.svg"
           />

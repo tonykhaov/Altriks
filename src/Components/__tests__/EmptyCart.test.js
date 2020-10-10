@@ -8,7 +8,7 @@ test("renders EmptyCart with correct datas", () => {
   const emptyCartMessage = screen.getByText(
     /nothing in the cart\.\.\. :\( Go add something to the cart!/i
   );
-  const cogImg = screen.getByAltText("cog");
+  const cogImg = screen.getByAltText("empty cart spinning cog");
 
   expect(emptyCartMessage).toBeInTheDocument();
   expect(cogImg).toBeInTheDocument();
@@ -52,7 +52,7 @@ test("renders EmptyCart with correct datas", () => {
          Go add something to the cart!
       </p>
       <img
-        alt="cog"
+        alt="empty cart spinning cog"
         class="cog"
         src="icon-cog.svg"
       />

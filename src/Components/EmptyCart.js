@@ -7,7 +7,7 @@ function EmptyCart({ className }) {
       <p>
         Nothing in the cart... :( <br /> Go add something to the cart!
       </p>
-      <img className="cog" src="icon-cog.svg" alt="cog" />
+      <img className="cog" src="icon-cog.svg" alt="empty cart spinning cog" />
     </div>
   );
 }
@@ -19,7 +19,7 @@ export default styled(EmptyCart)`
   align-items: center;
   justify-content: center;
   border: 5px solid coral;
-  
+
   .cog {
     animation: spin 100s forwards infinite;
     width: 32px;
