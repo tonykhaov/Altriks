@@ -71,7 +71,7 @@ test("renders ShoppingItems component with correct datas", () => {
       padding: 24px 48px;
       border-right: 1px solid lightgrey;
       overflow-y: auto;
-      height: calc(100vh - 103px);
+      height: calc(90vh - 103px);
     }
 
     .c0 hr {
@@ -114,6 +114,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="BikeAddToCartButton"
           >
             Add to cart
           </button>
@@ -137,6 +138,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="HelmetAddToCartButton"
           >
             Add to cart
           </button>
@@ -160,6 +162,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="T-shirtAddToCartButton"
           >
             Add to cart
           </button>
@@ -183,6 +186,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="BackpackAddToCartButton"
           >
             Add to cart
           </button>
@@ -206,6 +210,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="PantAddToCartButton"
           >
             Add to cart
           </button>
@@ -229,6 +234,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="GlovesAddToCartButton"
           >
             Add to cart
           </button>
@@ -252,6 +258,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="Swimming SuitAddToCartButton"
           >
             Add to cart
           </button>
@@ -275,6 +282,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="GogglesAddToCartButton"
           >
             Add to cart
           </button>
@@ -298,6 +306,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="Swimming CapAddToCartButton"
           >
             Add to cart
           </button>
@@ -321,6 +330,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="SocksAddToCartButton"
           >
             Add to cart
           </button>
@@ -344,6 +354,7 @@ test("renders ShoppingItems component with correct datas", () => {
           </span>
           <button
             class="c3"
+            data-testid="WheelAddToCartButton"
           >
             Add to cart
           </button>
